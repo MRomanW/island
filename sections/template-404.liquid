@@ -1,0 +1,54 @@
+<!-- 
+general бере значення із locales/*.json який відповідє за перреклад текстів і знаходить значення title 
+<h1>{{ 'general.404.title' | t }}</h1> 
+<p>{{ 'general.404.subtext_html' }}</p>
+-->
+
+<!-- Інший спосіб введення тексту через адмн панель -->
+<div class="max-w-md">
+   <div class="text-5xl font-bold my-4">{{ section.settings.title }}</div>
+   <div class="my-4">
+      <p class="text-base md:text-xl leading-normal">{{ section.settings.subtext_title }}</p>
+   </div>
+   <div class="my-4">
+      {% if section.settings.button_url == blank %}
+         {% assign shop_url = shop.secure_url %}
+      {% else %}
+         {% assign shop_url = section.settings.button_url %}
+      {% endif %}
+      <a class="px-4 inline py-2 text-base font-medium shadow bg-green-600 hover:bg-green-800 text-white" href="{{ shop_url }}">{{ section.settings.button_label }}</a>
+   </div>
+</div>
+
+{% schema %}
+{
+   "name": "Template 404", // назва яка буде відоражатися в адмін панелі "назва блока"
+   "tag": "section", // tag html який обгортає 
+   "class": "flex items-center justify-center text-center py-7 h-screen",
+   "settings": [ // Налаштування для розділу
+      {
+         "type": "text", // тип 
+         "id": "title", // id по якому будемо викликати данне значення 
+         "default": "404", // дефолтне значення
+         "label": "404 Heading Title" // лейбел із заголовком ввода значення
+      },
+      {
+         "type": "text",
+         "id": "subtext_title",
+         "default": "The page that you're looking for is not fond",
+         "label": "404 Subtext Title"
+      },
+      {
+         "type": "text",
+         "id": "button_label",
+         "default": "Back to homepage",
+         "label": "Button Label"
+      },
+      {
+         "type": "url",
+         "id": "button_url",
+         "label": "Button URL"
+      }
+   ]
+}
+{% endschema %}

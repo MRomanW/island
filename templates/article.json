@@ -1,0 +1,26 @@
+{
+   "sections": {
+      "template": { // назва секції яка дублюється в масив order
+         "type": "template-article",
+         "blocks": { // блоки на які силаєшся із файла template-article
+            "title": { 
+               "type": "article__title"
+            },
+            "author": {
+               "type": "article_author"
+            },
+            "data": {
+               "type": "article_date"
+            },
+            "image": {
+               "type": "featured_image"
+            },
+            "content": {
+               "type": "article_content"
+            }
+         },
+         "block_order": ["title","author","data","image","content"] // масив із блоків, порядок буде відображатися в кастомізації сторінки
+      }
+   },
+   "order": ["template"] // масив із секцій 
+}

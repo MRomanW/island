@@ -1,0 +1,11 @@
+{
+   "name": "Template 404", // Імя для шаблона 
+   /*"layout": "custom_theme",  використовувати шаблон в layout, якщо нічого не вказано буде використовуватися theme.liquid
+   "wrapper": "div#404_template.custom-class[custom-attribute=hello]",  елемент обгортки в якому можна задавати тег, класс, id, атребути */
+   "sections": {
+      "template-404": { // назва секції яка вказується в order
+         "type": "template-404" // вказується який шаблон в section використовувати
+      }
+   },
+   "order": ["template-404"]  // масив ідентифікаторів розділів
+}

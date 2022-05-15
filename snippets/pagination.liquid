@@ -1,0 +1,32 @@
+<!-- Pagination navs / previus -->
+
+{% if pagination.pages > 0 %} <!-- якщо пагінація сторінок більше ніж 1 виводити пагінацію. pagination - це параметр який задаємо коли виводимо через сніпет -->
+   <nav role="navigation" class="flex justify-center my-8"> <!-- role - встановлює навігація -->
+      {% if pagination.previous %} <!-- перевіряє чи є попередня сторінка -->
+         <a href="{{ pagination.previous.url }}" class="border border-gray-600 text-gray-600 hover:bg-gray-600 hover:text-white px-8 py-3 mx-1 rounded-sm font-medium">{{ pagination.previous.title }}</a>
+      {% endif %}
+      {% if pagination.next %} <!-- перевіряє чи є наступна сторінка -->
+         <a href="{{ pagination.next.url }}" class="border border-gray-600 text-gray-600 hover:bg-gray-600 hover:text-white px-8 py-3 mx-1 rounded-sm font-medium">{{ pagination.next.title }}</a>
+      {% endif %}
+   </nav> 
+{% endif %}
+
+<!-- Pagination w/ page numbers -->
+
+{% if pagination.pages > 0 %} <!-- якщо пагінація сторінок більше ніж 1 виводити пагінацію. pagination - це параметр який задаємо коли виводимо через сніпет -->
+   <nav role="navigation" class="flex justify-center my-8"> <!-- role - встановлює навігація -->
+      {% if pagination.previous %} <!-- перевіряє чи є попередня сторінка -->
+         <a href="{{ pagination.previous.url }}" class="border border-gray-600 text-gray-600 hover:bg-gray-600 hover:text-white px-8 py-3 mx-1 rounded-sm font-medium">{{ pagination.previous.title }}</a>
+      {% endif %}
+      {% for part in pagination.parts %} <!-- запускає цикл переору сторінок -->
+         {% if part.is_link %} <!-- видає силки на сторінки  -->
+            <a href="{{ part.url }}" class="border border-gray-600 text-gray-600 hover:bg-gray-600 hover:text-white px-8 py-3 mx-1 rounded-sm font-medium">{{ part.title }}</a>
+         {% else %} <!-- якщо я знаходжуся на цій сторінці вона стає не активна не клікабельна -->
+            <span class="border border-gray-600 text-gray-600 px-8 py-3 mx-1 rounded-sm font-medium">{{ part.title }}</span>
+         {% endif %}
+      {% endfor %}
+      {% if pagination.next %} <!-- перевіряє чи є наступна сторінка -->
+         <a href="{{ pagination.next.url }}" class="border border-gray-600 text-gray-600 hover:bg-gray-600 hover:text-white px-8 py-3 mx-1 rounded-sm font-medium">{{ pagination.next.title }}</a>
+      {% endif %}
+   </nav> 
+{% endif %}
